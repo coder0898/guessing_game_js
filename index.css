@@ -1,0 +1,94 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+   --primary-background:#f7f7f7;
+   --secondary-background:#ffffff;
+   --high-message-text:#d9534f;
+   --low-message-text:#1E90FF;
+   --success-message-text:#4CAF50;
+   --button-success:#4CAF50;
+   --hover-success:#45a049;
+}
+
+body{
+    background-color: var(--primary-background);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container{
+    background-color: var(--secondary-background);
+    padding: 20px;
+    border-radius: .5rem;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: all 0.3s ease-in-out;
+}
+
+.game-container header{
+    background-color: var(--low-message-text);
+    padding: 10px;
+    border-radius: .2rem;
+    margin-bottom: 5px;
+}
+
+header h1{
+    font-size: 1.7rem;
+    color: #fff;
+}
+
+.game-container main{
+    padding: 10px
+}
+
+main .game-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-content p{
+    font-size: 1.3rem;
+}
+
+.game-content input[type="number"]{
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 80%;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+.game-content button{
+    background-color: var(--button-success);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+button:hover{
+    background-color: var(--hover-success);
+}
+
+#message {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
