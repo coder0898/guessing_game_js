@@ -1,7 +1,12 @@
 const InputGuess = document.getElementById("inputGuess");
 const AttemptVal = document.getElementById("attemptVal");
-const MessageString = document.getElementById("message");
 const SubmitGuess = document.getElementById("submitGuess");
+
+const PopUpModal = document.getElementById("popUpModal");
+const IconPara = document.getElementById("icon-para");
+const ModalMessage = document.getElementById("modalMessage");
+const CloseBtn = document.getElementById("closeBtn");
+const RestartBtn = document.getElementById("restartBtn");
 
 let secretNumber;
 let attempts = 0,
@@ -24,21 +29,30 @@ function CheckGuess() {
     } else {
       if (inputVal > secretNumber) {
         attempts++;
-        MessageString.innerHTML = "too high";
+        PopUpModal.style.display = "flex";
+        IconPara.innerHTML = '<i class="fa-solid fa-gauge-simple-high"></i>';
+        IconPara.style.color = "#d9534f";
+        ModalMessage.innerHTML = "Too High Value";
+        ModalMessage.style.color = "#d9534f";
         InputGuess.value = "";
         AttemptVal.innerText = attempts;
       } else if (inputVal < secretNumber) {
         attempts++;
-        MessageString.innerHTML = "too low";
+        PopUpModal.style.display = "flex";
+        IconPara.innerHTML = '<i class="fa-solid fa-temperature-low"></i>';
+        IconPara.style.color = "#1E90FF";
+        ModalMessage.innerHTML = "Too Low Value";
+        ModalMessage.style.color = "#1E90FF";
         InputGuess.value = "";
         AttemptVal.innerText = attempts;
       } else {
         attempts++;
-        alert(
-          `You guess correct number, that is ${secretNumber} in ${attempts}/${totalAttempts}`
-        );
+        PopUpModal.style.display = "flex";
+        IconPara.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        IconPara.style.color = "#FACA16";
+        ModalMessage.innerHTML = `You guess correct number, that is ${secretNumber} in ${attempts}/${totalAttempts}`;
+        ModalMessage.style.color = "#FACA16";
         InputGuess.value = "";
-        MessageString.innerHTML = "";
         AttemptVal.innerText = attempts;
       }
 
@@ -46,18 +60,30 @@ function CheckGuess() {
         if (inputVal == secretNumber) {
           return;
         } else {
-          alert(
-            `Game over! You've reached the maximum number of attempts. The number was ${secretNumber}.`
-          );
+          PopUpModal.style.display = "flex";
+          IconPara.innerHTML = '<i class="fa-solid fa-circle-info"></i>';
+          IconPara.style.color = "#1E90FF";
+          ModalMessage.innerHTML = `Game over! You've reached the maximum number of attempts. The number was ${secretNumber}.`;
+          ModalMessage.style.color = "#1E90FF";
           InputGuess.value = "";
-          MessageString.innerHTML = "";
+          AttemptVal.value = 0;
         }
       }
     }
-    // console.log(secretNumber);
   }
 }
 
 SubmitGuess.addEventListener("click", () => {
   CheckGuess();
+});
+
+// popup
+CloseBtn.addEventListener("click", () => {
+  PopUpModal.style.display = "none";
+});
+
+RestartBtn.addEventListener("click", () => {
+  PopUpModal.style.display = "none";
+  InputGuess.value = "";
+  AttemptVal.innerText = 0;
 });
